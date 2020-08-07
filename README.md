@@ -16,25 +16,26 @@ This library implements the following probabilistic data structures:
 
 ## Bloom filter
 
+Remembering 4 phrases in 1 u64 value:
 ```v
 import mobarski.sketch
 
 mut b := sketch.bloom(1, 2) // 1*u64=64 bits, 2 hashing functions
 
-b.add("simple")
-b.add("fast")
-b.add("safe")
-b.add("compiled")
+b.add("v is simple")
+b.add("v is fast")
+b.add("v is safe")
+b.add("v is compiled")
 
-println(b.might_contain("simple"))   // true
-println(b.might_contain("fast"))     // true
-println(b.might_contain("safe"))     // true
-println(b.might_contain("compiled")) // true
+println(b.might_contain("v is simple"))   // true
+println(b.might_contain("v is fast"))     // true
+println(b.might_contain("v is safe"))     // true
+println(b.might_contain("v is compiled")) // true
 
-println(b.might_contain("complex"))     // ???
-println(b.might_contain("slow"))        // ???
-println(b.might_contain("unsafe"))      // ???
-println(b.might_contain("interpreted")) // ???
+println(b.might_contain("v is complex"))     // false
+println(b.might_contain("v is slow"))        // false
+println(b.might_contain("v is unsafe"))      // false
+println(b.might_contain("v is interpreted")) // false
 ```
 
 ## MinHash

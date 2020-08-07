@@ -54,21 +54,43 @@ fn bloom_has(b []u64, k int, item string) bool {
 	return true
 }
 
-mut b := bloom(1,2)
+if false {
+	mut b := bloom(1,2)
 
-b.add("this")
-b.add("is")
-b.add("a")
-b.add("test")
+	b.add("this")
+	b.add("is")
+	b.add("a")
+	b.add("test")
 
-println(b)
+	println(b)
 
-println(b.might_contain("this"))
-println(b.might_contain("is"))
-println(b.might_contain("a"))
-println(b.might_contain("test"))
-println("")
-println(b.might_contain("aaa"))
-println(b.might_contain("xyz"))
-println(b.might_contain("other"))
-println(b.might_contain("nope"))
+	println(b.might_contain("this"))
+	println(b.might_contain("is"))
+	println(b.might_contain("a"))
+	println(b.might_contain("test"))
+	println("")
+	println(b.might_contain("aaa"))
+	println(b.might_contain("xyz"))
+	println(b.might_contain("other"))
+	println(b.might_contain("nope"))
+}
+
+
+if true {
+	mut b := bloom(1, 2)
+
+	b.add("v is simple")
+	b.add("v is fast")
+	b.add("v is safe")
+	b.add("v is compiled")
+
+	println(b.might_contain("v is simple"))   // true
+	println(b.might_contain("v is fast"))     // true
+	println(b.might_contain("v is safe"))     // true
+	println(b.might_contain("v is compiled")) // true
+
+	println(b.might_contain("v is complex"))     // false
+	println(b.might_contain("v is slow"))        // false
+	println(b.might_contain("v is unsafe"))      // false
+	println(b.might_contain("v is interpreted")) // false
+}
