@@ -19,14 +19,6 @@ This library implements the following probabilistic data structures:
 ```v
 import mobarski.sketch
 
-
-```
-
-## MinHash
-
-```v
-import mobarski.sketch
-
 mut b := sketch.bloom(64*4, 4) // 256 bits, 4 hashing functions
 
 b.add("simple")
@@ -43,6 +35,13 @@ println(b.might_contain("complex"))     // ???
 println(b.might_contain("slow"))        // ???
 println(b.might_contain("unsafe"))      // ???
 println(b.might_contain("interpreted")) // ???
+```
+
+## MinHash
+
+```v
+import mobarski.sketch
+
 
 ```
 
