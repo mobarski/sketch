@@ -19,7 +19,7 @@ This library implements the following probabilistic data structures:
 ```v
 import mobarski.sketch
 
-mut b := sketch.bloom(1, 2) // 1*u64=256 bits, 2 hashing functions
+mut b := sketch.bloom(1, 2) // 1*u64=64 bits, 2 hashing functions
 
 b.add("simple")
 b.add("fast")
