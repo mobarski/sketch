@@ -7,24 +7,26 @@ const (
 )
 
 struct Bloom {
-	k int
+	n_hash int
 mut:
 	data []u64
 }
 
 // pub
-fn bloom(size int, k int) &Bloom {
-	mut b := &Bloom{k}
-	b.data = []u64{len:size}
+fn bloom(size int, n_hash int) &Bloom {
+	mut b := &Bloom{
+		n_hash: n_hash
+		data:   []u64{len:size}
+	}
 	return b
 }
 
 fn (mut b Bloom) add(item string) {
-	bloom_add(mut b.data, b.k, item)
+	bloom_add(mut b.data, b.n_hash, item)
 }
 
 fn (b Bloom) might_contain(item string) bool {
-	return bloom_has(b.data, b.k, item)
+	return bloom_has(b.data, b.n_hash, item)
 }
 
 // ----------------------------------------------------------------------------
